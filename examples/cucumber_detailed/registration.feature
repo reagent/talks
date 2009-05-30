@@ -46,3 +46,13 @@ Feature: User Registration
     Then I should be redirected to "/register"
     And I should see the message "NYET! A FAIL IS YOU"
     And I should see the message "Password doesn't match confirmation"
+
+  @slow
+  Scenario: Duplicate email address
+    Given a user exists in the system with the email "user@host.com"
+    When I visit "/register"
+    And I enter valid registration information
+    And I enter "user@host.com" for "user_email"
+    And I click the "user_submit" button
+    Then I should be redirected to "/register"
+    And I should see the message "Email has already been taken"

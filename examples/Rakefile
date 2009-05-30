@@ -1,0 +1,21 @@
+
+task :default => :all
+
+desc "run all examples"
+task :all do
+  dirs = %w(cucumber_story cucumber_detailed cucumber_data_tables)
+  cwd  = File.dirname(__FILE__)
+  
+  puts "Running Selenium tests for selenium_rc directory", '*' * 50
+  system("cd #{cwd}/selenium_rc && ruby spasibo_test.rb")
+  sleep 3
+  
+  dirs.each do |dir|
+    puts "Running cucumber stories for #{dir} directory", '*' * 50
+    system("cd #{cwd}/#{dir} && cucumber registration.feature")
+    sleep 3
+  end
+
+  sleep 3
+  
+end

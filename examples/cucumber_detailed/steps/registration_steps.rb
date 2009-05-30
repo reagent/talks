@@ -26,3 +26,18 @@ end
 Then /^I should see the message "([^\"]*)"$/ do |message|
   assert @browser.is_text_present(message)
 end
+
+Given /^a user exists in the system with the email "([^\"]*)"$/ do |email|
+  Given 'no users exist in the system'
+  When 'I visit "/register"'
+  When 'I enter valid registration information'
+  When 'I enter "' + email + '" for "user_email"'
+  When 'I click the "user_submit" button'
+end
+
+When /^I enter valid registration information$/ do
+  When 'I enter "user@host.com" for "user_email"'
+  When 'I enter "password" for "user_password"'
+  When 'I enter "password" for "user_password_confirmation"'
+  When 'I check the "user_terms" box'
+end
