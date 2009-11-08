@@ -6,7 +6,14 @@ the session, and a full narrative of what I discussed.
 
 ## Prerequisites
 
+If you want to run the sample code (located in the `examples` directory), you will need:
+
 * Ruby (1.8.6 or higher)
+* Rubygems
+* Mocha (gem)
+* JSON (gem)
+
+If you're on a platform that doesn't support the native JSON gem, you can use the `json_pure` gem instead.
 
 ## Contact
 
